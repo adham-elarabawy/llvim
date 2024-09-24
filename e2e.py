@@ -1,22 +1,28 @@
+from calendar import c
 import logging
 from multiprocessing import process
 
+from src.llvim.answer_utils import LLVIMConfig
 from src.llvim.emulator import VimEmulator
-from src.llvim.model import process_extraction_request
+from src.llvim.answer import process_extraction_request
+from rich.console import Console
 
 
 def main():
-    with open("hamming.txt") as f:
+    with open("static/hamming.txt") as f:
         document_text = f.read()
+
+    config = LLVIMConfig(window_height=100, verbatim_mode=True)
 
     result = process_extraction_request(
         document_text,
-        "What is the part about the importance of timing and luck?",
-        window_height=10,
+        "the paragraph about newton and edison",
+        config=config
     )
     print(result)
 
 
 if __name__ == "__main__":
+    console = Console()
     logging.basicConfig(level=logging.INFO)
     main()
