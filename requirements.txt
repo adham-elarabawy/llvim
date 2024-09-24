@@ -13,3 +13,6 @@ pytest
 
 # Pre-commit
 pre-commit
+
+pynvim
+jupyter

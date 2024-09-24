@@ -1,0 +1,8 @@
+Line 1: This is a test file.
+Line 2: It contains multiple lines of text.
+Line 3: We can use this to test Vim commands.
+Line 4: Each line has some unique content.
+Line 5: This is useful for testing yank and delete operations.
+Line 6: The file has a total of 8 lines.
+Line 7: This is the penultimate line.
+Line 8: This is the last line of the file.
