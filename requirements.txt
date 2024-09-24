@@ -1,0 +1,15 @@
+# Typing
+pyright
+
+# Formatting
+black
+isort
+
+# Linting
+flake8
+
+# Testing
+pytest
+
+# Pre-commit
+pre-commit
