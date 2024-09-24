@@ -7,7 +7,7 @@ Char = Annotated[str, "Single character"]
 
 class VimEmulator:
     def __init__(
-        self, document_text, window_height=10, visual_mode_register: Char = "z"
+        self, document_text: str, window_height: int, visual_mode_register: Char = "z"
     ):
         assert len(visual_mode_register) == 1
         self.nvim = pynvim.attach("child", argv=["nvim", "--embed", "--headless"])
@@ -17,12 +17,18 @@ class VimEmulator:
         self.nvim.call("setreg", visual_mode_register, "")
         self.alive = True
         self.window_height = window_height
+        self._clear_registers()
 
     def __enter__(self):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
+
+    def _clear_registers(self):
+        registers = list("abcdefghijklmnopqrstuvwxyz0123456789")
+        for reg in registers:
+            self.nvim.call("setreg", reg, "")
 
     def execute_command(self, command):
         self.nvim.command(f"normal! {command}")

@@ -1,0 +1,4 @@
+hamming.txt filter=lfs diff=lfs merge=lfs -text
+hamlet.txt filter=lfs diff=lfs merge=lfs -text
+static/hamlet.txt filter=lfs diff=lfs merge=lfs -text
+static/hamming.txt filter=lfs diff=lfs merge=lfs -text
