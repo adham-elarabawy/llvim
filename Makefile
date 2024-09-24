@@ -1,6 +1,6 @@
 .PHONY: create-env install format lint test clean remove-env
 
-CONDA_ENV_NAME := myproject
+CONDA_ENV_NAME := llvim
 PYTHON_VERSION := 3.9
 
 create-env:
