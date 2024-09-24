@@ -1,18 +1,9 @@
 import logging
-import time
-from enum import Enum
-from functools import lru_cache
-from pydoc import doc
-
-import spacy
-from openai import OpenAI
-from pydantic import BaseModel
 
 from src.llvim.answer_utils import (
     LLVIMConfig,
     LLVIMPipelineManager,
     LLVIMPipelineStage,
-    PipelineManager,
     VimCommandSequence,
     VimCommandSequenceWithVerbatim,
     fill_prompt,
@@ -34,6 +25,7 @@ def process_extraction_request(
     manager.end_stage()
 
     # TODO: some loop to chain serial commands
+    # TODO: allow model to traverse document using vim commands (e.g. hjkl)
     manager.start_stage(LLVIMPipelineStage.ANSWER_MODEL_CALL)
     sysprompt = open("src/llvim/sysprompt.txt", encoding="utf-8").read()
     prompt = fill_prompt(emulator.get_window_content(), extraction_query)
@@ -41,21 +33,22 @@ def process_extraction_request(
         VimCommandSequenceWithVerbatim if config.verbatim_mode else VimCommandSequence
     )
     command_sequence = get_structured_completion(sysprompt, prompt, response_format)
-    logging.info(f"Window content: {emulator.get_window_content()}")
+    if config.verbose:
+        logging.info("Window content: %s", emulator.get_window_content())
     manager.end_stage()
 
     manager.start_stage(LLVIMPipelineStage.VIM_EMULATOR_EXECUTION)
-    if isinstance(command_sequence, VimCommandSequenceWithVerbatim):
+    if isinstance(command_sequence, VimCommandSequenceWithVerbatim) and config.verbose:
         logging.info(
-            f"Desired text to extract: {command_sequence.verbatim_extracted_text}"
+            "Desired text to extract: %s", command_sequence.verbatim_extracted_text
         )
     logging.info(
-        f"Commands to execute: {command_sequence.commands_to_extract_exact_text}"
+        "Executing vim commands: %s", command_sequence.commands_to_extract_exact_text
     )
     content = None
     if command_sequence.commands_to_extract_exact_text:
         for command in command_sequence.commands_to_extract_exact_text:
-            logging.info(f"Executing command {command}")
+            # logging.info("Executing command %s", command)
             emulator.execute_command(command)
         # TODO: model-validate the results (limit number of retries)
         content = emulator.get_clipboard_content()
@@ -67,9 +60,10 @@ def process_extraction_request(
         num_tokens_saved = calculate_tokens_saved(
             content, command_sequence, config.answer_model
         )
-        logging.info(f"Number of tokens saved: {num_tokens_saved}")
-        logging.info(f"% of tokens saved: {num_tokens_saved / num_tokens_extracted}")
+        logging.info("Number of tokens saved: %s", num_tokens_saved)
+        percentage_saved = (num_tokens_saved / num_tokens_extracted) * 100
+        logging.info("%% of tokens saved: %.2f%%", percentage_saved)
         logging.info(
-            f"$ saved: {num_tokens_to_price(num_tokens_saved, config.answer_model)}"
+            "$ saved: %.5f", num_tokens_to_price(num_tokens_saved, config.answer_model)
         )
     return content

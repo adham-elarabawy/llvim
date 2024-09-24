@@ -1,3 +1,4 @@
+import atexit
 from typing import Annotated
 
 import pynvim
@@ -64,8 +65,9 @@ class VimEmulator:
 
     def close(self):
         if self.alive:
-            self.nvim.quit()
+            self.nvim.close()
             self.alive = False
 
     def __del__(self):
         self.close()
+        atexit.unregister(self.close)
