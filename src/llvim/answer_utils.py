@@ -1,12 +1,12 @@
-from functools import lru_cache
 import logging
 import time
 from enum import Enum
+from functools import lru_cache
 from typing import Generic, TypeVar
 
+import spacy
 from openai import OpenAI
 from pydantic import BaseModel
-import spacy
 
 EnumT = TypeVar("EnumT", bound=Enum)
 
@@ -55,13 +55,17 @@ class PipelineManager(Generic[EnumT]):
         return sum(self.stage_to_elapsed_time[prev_stage] for prev_stage in prev_stages)
 
 
-
 class LLVIMConfig(BaseModel):
     window_height: int
-    verbatim_mode: bool = False # Toggle model also returning verbatim text for synthetic checking
+    verbatim_mode: bool = (
+        False  # Toggle model also returning verbatim text for synthetic checking
+    )
     answer_model: str = "gpt-4o-2024-08-06"
+
+
 class VimCommandSequence(BaseModel):
     commands_to_extract_exact_text: list[str] | None
+
 
 class VimCommandSequenceWithVerbatim(VimCommandSequence):
     verbatim_extracted_text: str | None
@@ -97,7 +101,9 @@ def get_client() -> OpenAI:
     return OpenAI()
 
 
-def get_structured_completion(sysprompt: str, prompt: str, response_format) -> VimCommandSequence | VimCommandSequenceWithVerbatim:
+def get_structured_completion(
+    sysprompt: str, prompt: str, response_format
+) -> VimCommandSequence | VimCommandSequenceWithVerbatim:
     client = get_client()
     completion = client.beta.chat.completions.parse(
         model="gpt-4o-2024-08-06",
@@ -106,7 +112,7 @@ def get_structured_completion(sysprompt: str, prompt: str, response_format) -> V
             {
                 "role": "user",
                 "content": prompt,
-            }
+            },
         ],
         response_format=response_format,
         max_tokens=1000,
