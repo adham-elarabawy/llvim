@@ -21,7 +21,7 @@ LLVim uses Large Language Models (LLMs) to operate on text documents through a V
 ```bibtex
 @misc{llvim,
   author = {Adham Elarabawy},
-  title = {LLVim: Verifiable and Token-Efficient Text Extraction Using LLMs and Vim Commands.},
+  title = {LLVim: Verifiable and Token-Efficient Text Extraction Using LLMs and Vim.},
   year = {2024},
   version = {0.1.0},
   url = {https://github.com/adham-elarabawy/llvim},
