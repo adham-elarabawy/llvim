@@ -29,5 +29,5 @@ def calculate_tokens_saved(
     return num_tokens_extracted - num_output_tokens
 
 
-def num_tokens_to_price(num_tokens: int, answer_model: str):
-    return num_tokens * MODEL_TO_PRICE_PER_TOKEN[answer_model]
+def num_tokens_to_price(token_count: int, answer_model: str):
+    return token_count * MODEL_TO_PRICE_PER_TOKEN[answer_model]

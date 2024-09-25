@@ -2,6 +2,7 @@ import logging
 import time
 from enum import Enum
 from functools import lru_cache
+from tabnanny import verbose
 from typing import Generic, TypeVar
 
 import spacy
@@ -26,7 +27,8 @@ class PipelineManager(Generic[EnumT]):
         self.current_stage = stage
         if self.process_until and stage == self.process_until:
             logging.info(
-                f"Halting pipeline at stage: {self.process_until.name} per `process_until` config."
+                "Halting pipeline at stage: %s per `process_until` config.",
+                self.process_until.name,
             )
             return False  # halt
         return True  # continue
@@ -37,7 +39,9 @@ class PipelineManager(Generic[EnumT]):
         assert self.last_time is not None
         self.stage_to_elapsed_time[self.current_stage] = time.time() - self.last_time
         logging.info(
-            f"Finished stage: {self.current_stage.name} in {self.stage_to_elapsed_time[self.current_stage]:.2f} seconds."
+            "Finished stage: %s in %.2f seconds.",
+            self.current_stage.name,
+            self.stage_to_elapsed_time[self.current_stage],
         )
         self.current_stage = None
 
@@ -61,6 +65,7 @@ class LLVIMConfig(BaseModel):
         False  # Toggle model also returning verbatim text for synthetic checking
     )
     answer_model: str = "gpt-4o-2024-08-06"
+    verbose: bool = False
 
 
 class VimCommandSequence(BaseModel):
