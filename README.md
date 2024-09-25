@@ -4,7 +4,8 @@
 
 LLVim uses Large Language Models (LLMs) to operate on text documents through a Vim client. This approach **ensures model-extracted content exists in the source text**, eliminating hallucinations common in traditional LLM extraction.  LLVim achieves over **95% reduction in token usage** compared to verbatim extraction methods, and is **robust on weakly supported languages** that even frontier models struggle with. It operates a headless Neovim instance to execute LLM-generated Vim commands, providing verifiable and efficient text extraction.
 
-![CleanShot 2024-09-24 at 15 53 17](https://github.com/user-attachments/assets/614c81d5-04fd-40c8-a0b8-241e572d3c99)
+![CleanShot 2024-09-24 at 16 11 51](https://github.com/user-attachments/assets/bc11c89a-31e2-4c35-95c2-19098fbba8ec)
+
 
 
 ## Roadmap
