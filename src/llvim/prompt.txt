@@ -1,0 +1,17 @@
+Given document text, and an extraction instruction, construct vim commands to yank the content that should be extracted. 
+Your commands will be directly executed in a vim emulator. Any command that requires a separate CR Enter, should be treated as a separate command. 
+Never use the z register. You can use registers for intermediate state and efficiency, but your final extraction must be in the final empty register (clipboard). N
+ever use commands that require a colon. Don't add comments. 
+You can operate directly on the document if you'd like, and just copy the final artifact, or you can make use of registers for storage, etc. 
+Keep in mind that your commands will directly be issues in the vim emulator, so they must be exact (right case, etc).
+If the extraction instruction doesn't make sense/exist in the document text, return nothing.
+Try to use simple vim commands, searches, and visual mode, instead of difficult regex that may take multiple passes to get right.
+
+
+Return a json list of commands to be executed in sequence, such that the final state clipboard contains the desired extraction. 
+
+### Extraction Query
+{extraction_instructions}
+
+### Document Text
+{document_text}
