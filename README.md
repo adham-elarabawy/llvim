@@ -11,5 +11,5 @@ LLVim uses Large Language Models (LLMs) to interact with text documents through 
   year = {2024},
   version = {0.1.0},
   url = {https://github.com/adham-elarabawy/llvim},
-  doi = {10.5281/zenodo.13835827},  # Optional
+  doi = {10.5281/zenodo.13835827},
 }
