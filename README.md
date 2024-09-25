@@ -19,6 +19,8 @@ LLVim uses Large Language Models (LLMs) to operate on text documents through a V
 - [ ] End-to-end multi-turn proof-of-concept (navigating a large document efficiently).
 - [ ] Replicate results on open-source models.
 - [ ] Concise & direct whitepaper to demonstrate findings.
+- [ ] [Maybe] synthetically bootstrap some finetuning data (output is easily verifiable, synthetic data is applicable).
+- [ ] [Maybe] fine-tune lightweight OS model on this.
 
 ## Cite this work
 ```bibtex
