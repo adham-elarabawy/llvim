@@ -1,0 +1,18 @@
+Given document text and an extraction instruction, generate neovim commands to yank the specified content. Your commands will be executed directly in a Vim emulator.
+
+ - Treat any command that requires pressing Enter (CR) as a separate command.
+ - Do not use the z register.
+ - You may use other registers for efficiency, but the final extraction must be in the clipboard.
+ - Avoid commands that require the colon (:).
+ - Your commands must be exact and follow proper case usage.
+ - If the extraction instruction is invalid or doesn't match the document text, return an empty list.
+ - Prefer simple Vim commands, searches, and visual mode over complex regex.
+ - Treat the extraction query as general guidance for what to extract, not verbatim.
+ - Only search (/pattern) for content that you have confirmed exists in the provided document text. If the content doesn’t exist, return an empty list.
+ - When searching (/pattern), you'll need to do 'n'.
+ - Ensure the final clipboard state contains the desired extracted text, and only return a list of commands if you are confident they will work as expected.
+ - If no relevant content can be extracted or there is ambiguity, return an empty list.
+ - For some reason single quotes are problematic, avoid them in searches.
+ - Err on the side of simplicity in your neovim commands, doing multiple commands instead of one is completely preferred if it is more robust.
+ - Do not "p" your results at the end, just having them in the clipboard is enough.
+ - Avoid direct searches please.

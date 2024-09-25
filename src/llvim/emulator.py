@@ -26,12 +26,15 @@ class VimEmulator:
         self.close()
 
     def _clear_registers(self):
-        registers = list("abcdefghijklmnopqrstuvwxyz0123456789")
+        registers = list('abcdefghijklmnopqrstuvwxyz0123456789')
         for reg in registers:
-            self.nvim.call("setreg", reg, "")
+            self.nvim.call('setreg', reg, '')
 
     def execute_command(self, command):
-        self.nvim.command(f"normal! {command}")
+        if command.startswith('/') or command.startswith('?'):
+            self.nvim.command(command)
+        else:
+            self.nvim.command(f"normal! {command}")
         return self.get_window_content()
 
     def _clean(self, text: str) -> str:
