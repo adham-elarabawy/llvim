@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as follows."
+authors:
+  - family-names: "Elarabawy"
+    given-names: "Adham"
+title: "LLVim: Verifiable and Token-Efficient Text Extraction Using LLMs and Vim Commands."
+version: "0.1.0"
+doi: "10.5281/zenodo.13835828"
+date-released: "2024-09-24"
+url: "https://github.com/adham-elarabawy/llvim"

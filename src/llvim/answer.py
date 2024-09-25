@@ -25,7 +25,7 @@ def process_extraction_request(
     manager.end_stage()
 
     # TODO: some loop to chain serial commands
-    # TODO: allow model to traverse document using vim commands (e.g. hjkl)
+    # TODO: allow model to traverse document using vim commands (e.g. hjkl), then observe window content state
     manager.start_stage(LLVIMPipelineStage.ANSWER_MODEL_CALL)
     sysprompt = open("src/llvim/sysprompt.txt", encoding="utf-8").read()
     prompt = fill_prompt(emulator.get_window_content(), extraction_query)

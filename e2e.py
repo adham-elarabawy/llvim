@@ -14,11 +14,13 @@ def main(console: Console):
         document_text = f.read()
 
     config = LLVIMConfig(window_height=100, verbatim_mode=True)
-
+    # query = "the paragraph about newton and edison"
+    query = "the quote about manufacturing luck or something like that"
     extracted_content = process_extraction_request(
-        document_text, "the paragraph about newton and edison", config=config
+        document_text, query, config=config
     )
-    console.print(f"[bold]Extracted content:[/bold]\n{extracted_content}")
+    console.print(f"[purple][bold]Query:[/bold][/purple]\n{query}")
+    console.print(f"[purple][bold]Extracted content:[/bold][/purple]\n{extracted_content}")
 
 
 if __name__ == "__main__":
