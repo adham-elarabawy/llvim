@@ -1,4 +1,4 @@
-# LLVim: **Verifiable and Token-Efficient Text Extraction Using LLMs and Vim Commands.**
+# LLVim: **Verifiable and Token-Efficient Text Extraction Using LLMs and Vim.**
 [![DOI](https://zenodo.org/badge/862087488.svg)](https://zenodo.org/doi/10.5281/zenodo.13835827)
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
