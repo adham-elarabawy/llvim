@@ -17,6 +17,7 @@ LLVim uses Large Language Models (LLMs) to operate on text documents through a V
 - [ ] Plot partial-ratio existence (verifiable extraction) vs extracted length. (compared to verbatim extraction methods)
 - [ ] Ablate vim window size
 - [ ] End-to-end multi-turn proof-of-concept (navigating a large document efficiently).
+- [ ] Replicate results on open-source models.
 - [ ] Concise & direct whitepaper to demonstrate findings.
 
 ## Cite this work
