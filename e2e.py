@@ -14,8 +14,7 @@ def main(console: Console):
         document_text = f.read()
 
     config = LLVIMConfig(window_height=100, verbatim_mode=True)
-    # query = "the paragraph about newton and edison"
-    query = "the quote about manufacturing luck or something like that"
+    query = "the blurb about newton and edison"
     extracted_content = process_extraction_request(
         document_text, query, config=config
     )
