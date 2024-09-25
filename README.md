@@ -1,5 +1,6 @@
 # LLVim: **Verifiable and Token-Efficient Text Extraction Using LLMs and Vim Commands.**
 [![DOI](https://zenodo.org/badge/862087488.svg)](https://zenodo.org/doi/10.5281/zenodo.13835827)
+[![CC BY 4.0][cc-by-shield]][cc-by]
 
 LLVim uses Large Language Models (LLMs) to interact with text documents through Vim commands. This approach **ensures extracted content exists in the source text**, eliminating hallucinations common in traditional LLM extraction. LLVim achieves over **95% reduction in token usage** compared to verbatim extraction methods, and is **robust on weakly supported languages** that even frontier models struggle with. It operates a headless Neovim instance to execute LLM-generated Vim commands, providing verifiable and efficient text extraction.
 
@@ -23,3 +24,12 @@ LLVim uses Large Language Models (LLMs) to interact with text documents through 
   url = {https://github.com/adham-elarabawy/llvim},
   doi = {10.5281/zenodo.13835827},
 }
+
+```
+
+This work is licensed under a
+[Creative Commons Attribution 4.0 International License][cc-by]. This imposes that you must provide proper attribution (citation above) when referencing, using, or deriving from this work.
+
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
