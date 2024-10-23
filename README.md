@@ -12,7 +12,7 @@ LLVim uses Large Language Models (LLMs) to operate on text documents through a V
 - [x] Vim emulator with helpers for llm interaction.
 - [x] End-to-end single-turn proof-of-concept, with Hamming's [You and Your Research](https://fs.blog/great-talks/richard-hamming-your-research/).
 - [x] Token savings metric. Aim to answer "how many tokens do we save by doing this?"
-- [ ] Plot token savings vs extracted length. (compared to verbatim extraction methods)
+- [x] Plot token savings vs extracted length. (compared to verbatim extraction methods)
 - [ ] Plot pipeline latency vs extracted length. (compared to verbatim extraction methods)
 - [ ] Plot partial-ratio existence (verifiable extraction) vs extracted length. (compared to verbatim extraction methods)
 - [ ] Ablate vim window size
@@ -23,6 +23,7 @@ LLVim uses Large Language Models (LLMs) to operate on text documents through a V
 - [ ] [Maybe] fine-tune lightweight OS model on this.
 
 ## Artifacts
+Plot token savings vs extracted length. (compared to verbatim extraction methods)
 ![image](https://github.com/user-attachments/assets/83c03b4d-7989-4e43-a905-f46de683c70b)
 
 
