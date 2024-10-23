@@ -22,6 +22,10 @@ LLVim uses Large Language Models (LLMs) to operate on text documents through a V
 - [ ] [Maybe] synthetically bootstrap some finetuning data (output is easily verifiable, synthetic data is applicable).
 - [ ] [Maybe] fine-tune lightweight OS model on this.
 
+## Artifacts
+![image](https://github.com/user-attachments/assets/83c03b4d-7989-4e43-a905-f46de683c70b)
+
+
 ## Cite this work
 ```bibtex
 @misc{llvim,
